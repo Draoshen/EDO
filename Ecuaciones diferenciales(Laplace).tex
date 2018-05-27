@@ -1,0 +1,255 @@
+\documentclass[11pt]{article}
+\usepackage{imakeidx}
+\usepackage{graphicx} % paquete para las imágenes
+\graphicspath{{c:/Users/rafam/Downloads}}
+\usepackage[utf8]{inputenc} %para que las tildes 
+\usepackage{enumerate} 
+\usepackage{amsmath} %paquete para el display de las fracciones
+\usepackage{vmargin} %paquete para los márgenes
+\usepackage{mathrsfs} %Este paquete lo utilizo para lo de Laplace
+\usepackage{bigints}%Paquete para hacer las integrales más grandes
+\def\Laplace#1{\mathscr{L}}%Aqui defino como va a ser mi Laplace
+\setpapersize{A4}
+
+\setmargins{2.5cm}       % margen izquierdo
+{1.5cm}                        % margen superior
+{16.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}                           % espacio entre el texto y el pie de página
+
+\makeindex[columns=3, intoc]
+\begin{document}
+
+\title{Ejercicios de Ecuaciones Diferenciales}
+\author{Rafael Alejandro Mellado Climent}
+\date{\today}
+\maketitle
+\pagebreak 
+\begin{center}
+\textbf{Ejercicios: (5) Transformada de Laplace}
+\end{center}
+
+\textbf{5.1 Aplicando las propiedades de la translación, halle las siguientes transformadas de Laplace:}
+\begin{enumerate}[(a)]
+\item \large{$\Laplace\left[e^{2t}sin(t)].$} 
+\\ \\
+Dado que tenemos que la transformada de Laplace de $g(t)=e^{at}f(t)$,Por la propiedad de desplazamiento en frecuencia, podemos dividir nuestra función como lo acabamos de hacer, de tal manera que nos queda que:
+
+
+$\Laplace\left[e^{2t}sin(t)]=$ $\Laplace\left[e^{2t}f(t)]=F(s-a)=\dfrac{s-a}{(s-a)^2+1}=\dfrac{s-2}{(s-2)^2+1}$
+\\
+\item $\Laplace\left[e^{5t}cos(2t)].$
+\\ \\
+Aplicando el mismo principio:
+\\
+\\
+$\Laplace\left[e^{5t}cos(2t)]=$ $\Laplace\left[e^{5t}f(t)]=F(s-a)=\dfrac{a}{(s-a)^2+2^2}=\dfrac{5}{(s-5)^2+2^2}$
+\item $\Laplace\left[e^{3t}t].$
+\\ \\
+$\Laplace\left[e^{3t}t]=$ $\Laplace\left[e^{3t}f(t)]=F(s-a)=\dfrac{1}{(s-a)^2}=\dfrac{1}{(s-3)^2}$
+\item $\Laplace\left[t^2U(t-1)].$
+\\ \\
+Para empezar voy a recordar que la función:
+\begin{equation}
+     \label{eq:como-hacerle-la-llave-grande}
+     U(t-1) = \left\{
+	       \begin{array}{ll}
+		 1      & \mathrm{si\ }  t\geq 1\\
+		 0 & \mathrm{si\ } t  < 1 \\
+		
+	       \end{array}
+	     \right.
+   \end{equation} 
+Como no me acuerdo exactamente de como aplicar la propiedad de desplazamiento temporal, que enunciaba lo siguiente:
+$$\Laplace[[f(t-a)\cdot U(t-a)]_{(s)}=e^{(-a\cdot s)}\cdot F(s-a);$$
+No sé cómo aplicarla ya que para poder aplicarla necesito que el desplazamiento temporal sea el mismo, y en este caso no lo es. Voy a intentarlo aplicando la definición:
+\begin{equation}
+\Laplace[[f(t)\cdot U(t-a)]_{(s)}= \int_0^{\infty}f(t)\cdot U(t-a)e^{-st}dt
+\end{equation}
+que sustituyendo en (2) por nuestros valores obtenemos:
+$$\Laplace[[f(t)\cdot U(t-1)]_{(s)}= \int_0^{\infty}f(t)\cdot U(t-1)e^{-st}dt$$
+Aunque si que es verdad que puedo expresar mi función de t como la suma y resta en una unidad de t, quedando de esta manera:
+$$\int_0^{\infty}(t-1+1)\cdot U(t-1)e^{-st}dt=\int_0^{\infty}\left((t-1)\cdot U(t-1)e^{-st}+U(t-1)e^{-st}\right)dt$$
+\clearpage
+Esto no es más que la suma de integrales:
+$$\int_0^{\infty}\left((t-1)\cdot U(t-1)e^{-st}+U(t-1)e^{-st}\right)dt=F(s)\cdot e^{-s}+\int_0^{\infty}U(t-1)e^{-st}dt=$$
+Donde tenemos que: \\
+\begin{equation}
+\int_0^{\infty}U(t-1)e^{-st}dt=\Laplace[[U(t-1)]_{(s)}
+\end{equation}
+
+$$=e^{-s}\cdot F(s)\cdot \Laplace[[U(t-1)]_{(s)}=\dfrac{e^{-s}}{s^2}\cdot
+\dfrac{e^{-s}}{s}=\dfrac{e^{-2s}}{s^3}$$
+\item $\Laplace[[(t-2)\cdot U(t-2)].$
+\\ Esta se resuelve por desplazamiento lateral, quedando:
+$$\Laplace[[(t-2)\cdot U(t-2)]=\dfrac{e^{-2s}}{s^2}$$
+\item $$\Laplace[[(t^2-3t+2)\cdot U(t-2)].$$
+\\ $$\Laplace[[(t-2)\cdot (t-1)\cdot U(t-2)]=\Laplace[[((t-2)+1)(t-2)\cdot U(t-2)]=$$
+\\$$\Laplace[[(t-2)^2U(t-2)] \cdot\Laplace[[(t-2)U(t-2)]$$
+\\Quedando unas transformadas de Laplace:
+\\
+\begin{center}
+$\left(\dfrac{2e^{-2s}}{s^3}\right)$ $\left(\dfrac{e^{-2s}}{s^2}\right)=$ $\left(\dfrac{2e^{-4s}}{s^4}\right)$
+\end{center}
+
+\end{enumerate}
+\textbf{5.2 Utilice las propiedades de la transformada de Laplace para calcular:}
+\begin{enumerate}[(i)]
+\item $\Laplace[[tsint(2t)]$
+\\ Para resolver esta transformada de Laplace utilizaremos la siguiente propiedad:\\
+\begin{equation}
+\Laplace[[t^nf(t)]_{(s)}=(-1)^n\dfrac{d}{ds^n}F(s)=(-1)^nF^{(n)}(s)
+\end{equation}
+\\ En nuestro caso la transformada de Laplace, sería de la siguiente forma:
+$$\Laplace[[t\cdot f(t)]=(-1)\cdot F(s)=(-1) \left(\dfrac{2}{s^2+2^2}\right)\dfrac{d}{ds}=(-1)\left(\dfrac{-4s}{(s^2+4)^2}\right)=\dfrac{4s}{(s^2+4)^2}$$
+\\ \item $\Laplace[[t^2cos(4t)].$ \\
+$$\Laplace[[t^2f(t)]=(-1)^2\left(\dfrac{s}{s^2+4^2}\right)\dfrac{d}{ds}=\left(\dfrac{s}{s^2+4^2}\right)\dfrac{d}{ds}=(-1)\dfrac{x^2-16}{(x^2+16)^2}$$
+\clearpage
+\item $\Laplace[[t^n];n\geq 1$
+\\ $$\Laplace[[t^n\cdot U(t)]=(-1)^n \left(\dfrac{1}{s}\right)\dfrac{d}{ds^n}$$
+$ \Laplace[[t^n] = \left\{
+	       \begin{array}{ll} 
+		 1      & \mathrm{si\ }  \ n \ es \ par\\ \\
+		 (-1) \left(\dfrac{1}{s}\right)\dfrac{d}{ds^n} & \mathrm{si\ } 	 n \ no \ es \ par \\
+		
+	       \end{array}
+	     \right.$ \\ \\
+\item $\Laplace[[\bigint_0^{t}\dfrac{sin(u)}{u}du]$
+\\ \\ Para resolver estas integrales voy a aplicar la misma definición de la transformada de Laplace, vamos a utilizar la propiedades del producto de convolución :
+\begin{equation}
+\Laplace[[f(t)*g(t)]=\Laplace[[f(t)]\cdot \Laplace[g(t)]
+\end{equation}
+Para empezar vampos a ver que efectivamente  es un producto de convolución, el producto de convolución tiene que satisfacer lo siguiente
+\begin{equation}
+f(t)*g(t)=\int_0^tf(t)g(t-a)dt
+\end{equation}
+\\ \\ Lo bueno que tiene el producto de convolción es asociativo pues no dejan de ser integrales,por lo que me da igual cual de ellas sea la $f(t)$ y cual $g(t)$, para este caso en concreto me interesa que mi función $\dfrac{sin(u)}{u}$, sea mi $f(t)$ y mi otra función que aparece será la función identidad evaluada en - u,es decir, $ U(t-u)$, quedándome de esta manera una transformada de Laplace de un producto de convolución, que como hemos visto antes es de la forma que aparece en (4).
+
+Volviendo a nuestro caso particular:
+$$\Laplace[[\int_0^{t}\dfrac{sin(u)}{u}du]=\Laplace[[sin(t)]\cdot \Laplace[[U(t-u)]=\left(\dfrac{1}{s^2+1}\right)\left(\dfrac{e^{(-us)}}{s}\right)=\dfrac{e^{-us}}{(s^2+1)s}$$
+
+\item $\Laplace[[t \bigint_0^{t}sin(u)du]$ \\ \\
+No sé muy bien como resolver esta ecuación, así lo que voy a hacer es resolver esa integral, quedando como nueva transformada de Laplace, la siguiente:
+$$\Laplace[[t \int_0^{t}sin(u)du]=\Laplace[[t((-1)(cos(t)+1))]=\Laplace[[-tcos(t)-t]=(-1)\Laplace[tcos(t)]\cdot(-1)\Laplace[[t]=$$
+$$= \Laplace[[t\cdot cos(t)]\cdot\Laplace[[t]$$ 
+\\ Estas se resuelven como se indica en la fórmula(4):
+$$\Laplace[[t\cdot cos(t)]\cdot\Laplace[[t]=(-1)\left(\dfrac{s}{s^2+1}\right)\dfrac{d}{ds}=\dfrac{s^2-1}{(s^2+1)^2}$$
+\clearpage
+\item $\Laplace[[e^{-2t}\int_0^tu\cdot e^{2u}sen(u)du]$
+En esta no sé ni por dónde empezar... \\ \\
+
+\end{enumerate}
+
+\textbf{5.3 Exprese las siguientes funciones en términos de funciones escalón unitario y obtenga su transformada de Laplace \\ \\}
+\begin{enumerate}[(a)]
+%Ojo que aquí he conseguido hacer las llaves para funciones
+\item  $\left\{
+	       \begin{array}{ll}
+		 3      & \mathrm{si\ }  0\leq t <2\\
+		 2t-2 & \mathrm{si\ }   2\leq t <4\\
+		sin(t) & \mathrm{si\ }  t\geq 4
+	       \end{array}\right.$ \\
+\item  $\left\{
+	       \begin{array}{ll}
+		 t      & \mathrm{si\ }  0\leq t <\\
+		 1 & \mathrm{si\ }   1\leq t <2\\
+		3-t & \mathrm{si\ }  2 \leq t\leq 3
+	       \end{array}\right.$ \\
+\item  $\left\{
+	       \begin{array}{ll}
+		 3      & \mathrm{si\ }  0\leq t <4\pi\\
+		 0 		& \mathrm{si\ }  t\geq 4\pi
+	
+	       \end{array}\right.$
+\item  $\left\{
+	       \begin{array}{ll}
+		e^{-2t}      & \mathrm{si\ }  0\leq t <\pi\\
+		 0 		& \mathrm{si\ }  t\geq \pi
+	
+	       \end{array}\right.$
+	      \\ \\
+\end{enumerate}
+\textbf{5.4 Calcule las siguientes transformadas inversas}
+\begin{enumerate}[(i.)]
+\item $\Laplace[^{-1}\left[\dfrac{e^{-2s}}{s^2}\right]$ \\
+\\ Este resultado es el que hemos obtenido antes, concretamente en el ejercicio 5.1 el apartado e), por lo que:
+$$\Laplace[^{-1}\left[\dfrac{e^{-2s}}{s^2}\right]=(t-2)\cdot U(t-2)$$
+\item $\Laplace[^{-1}\left[\dfrac{1}{s^2-2s +3 }\right]$ \\ \\
+Lo primero que tenemos que hacer en estos casos es descomponer nuestra fracción en suma de fracciones, siempre que se pueda como este no es el caso, vamos a completar cuadrados de manera que nos quede más simplificado:
+$$\dfrac{1}{s^2-2s+3}=\dfrac{1}{(s-1)^2+2}$$
+\\ Ahora bien fijémonos en que el polinomio se parece bastante a:
+$$\dfrac{b}{(s-a)^2+b^2}= \dfrac{ +1-1+\sqrt{2}}{(s-1)^2\sqrt{2^2}+1}$$
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
