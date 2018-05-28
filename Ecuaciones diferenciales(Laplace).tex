@@ -178,12 +178,72 @@ En esta no sé ni por dónde empezar... \\ \\
 \\ Este resultado es el que hemos obtenido antes, concretamente en el ejercicio 5.1 el apartado e), por lo que:
 $$\Laplace[^{-1}\left[\dfrac{e^{-2s}}{s^2}\right]=(t-2)\cdot U(t-2)$$
 \item $\Laplace[^{-1}\left[\dfrac{1}{s^2-2s +3 }\right]$ \\ \\
-Lo primero que tenemos que hacer en estos casos es descomponer nuestra fracción en suma de fracciones, siempre que se pueda como este no es el caso, vamos a completar cuadrados de manera que nos quede más simplificado:
+Lo primero que tenemos que hacer en estos casos es descomponer nuestra 
+fracción en suma de fracciones, siempre que se pueda como este no es el 
+caso, vamos a completar cuadrados de manera que nos quede más simplificado:
 $$\dfrac{1}{s^2-2s+3}=\dfrac{1}{(s-1)^2+2}$$
 \\ Ahora bien fijémonos en que el polinomio se parece bastante a:
 $$\dfrac{b}{(s-a)^2+b^2}= \dfrac{ +1-1+\sqrt{2}}{(s-1)^2\sqrt{2^2}+1}$$
-\end{enumerate}
+\clearpage
+\item $\Laplace[^{-1}\left[\dfrac{s}{s^2+4s+5}\right]$ \\ \\
+Para resolver esta primero completamos cuadrados, de esta manera podemos verlo más claro todo, quedando así:
+$$\Laplace[^{-1}\left[\dfrac{s}{s^2+4s+5}\right]= \Laplace[^{-1}\left[\dfrac{s}{(s+2)^2+1}\right]=\Laplace[^{-1}\left[\dfrac{s+2}{(s+2)^2+1}\right]\cdot\Laplace[^{-1}\left[\dfrac{-2}{(s+2)^2+1}\right]=$$
+$$=e^{-2t}\cdot cos(t) \cdot \Laplace[^{-1}\left[\dfrac{-2}{(s+2)^2+1}
+\right]=e^{-2t}\cdot cos(t) \cdot (-2)\Laplace[^{-1}\left[\dfrac{1}{(s+2)^2+1}\right]=$$
+$$e^{-2t}\cdot cos(t) \cdot (-2)e^{-2t}\cdot sen(t)$$
+\item $\Laplace[^{-1}\left[\dfrac{6s}{s^2+9}+\dfrac{3}{2s^2+8s+10}\right]$ \
+\ \\
+\\ Para resolver esta transformada de Laplace lo que vamos a hacer es dividirla 
+en dos por la propiedad de linealidad de las transformadas de Laplace, 
+quedando entonces de esta manera:
+\begin{center}
 
+
+$$\Laplace[^{-1}\left[\dfrac{6s}{s^2+9}+
+\dfrac{3}{2s^2+8s+10}\right]= \Laplace[^{-1}\left[\dfrac{6s}{s^2+9}\right] 3 
+\cdot\Laplace[^{-1}\left[\dfrac{1}{2s^2+8s+10}\right]=$$
+$$= 6\cdot cos(3t)\cdot 3 \cdot\Laplace[^{-1}\left[\dfrac{1}{2s^2+8s+10}\right]=18 \cdot cos(3t) \cdot \Laplace[^{-1}\left[\dfrac{1}{2s^2+8s+10}\right]=$$
+$$=18 \cdot cos(3t) \cdot \left(\dfrac{1}{2} \right)\cdot \Laplace[^{-1}\left[\dfrac{1}{(s+2)^2+1}\right]=\cdot cos(3t) \cdot \left(\dfrac{1}{2} \right) \cdot e^{-2t}sen(t);$$
+\end{center}
+\item $\Laplace[^{-1}\left[\dfrac{e^{-\pi}}{s^2+1}\right]$
+\\ Esta es inmediata
+$\Laplace[^{-1}\left[\dfrac{e^{-\pi}}{s^2+1}\right]=sen(b(t-\pi))U(t-\pi)$
+\item $\Laplace[^{-1}\left[\dfrac{e^{-s}}{s^2+s}\right]$
+\\ \\ Para resolver esta inversa, primero vamos a factorizar el polinomio:
+$$\Laplace[^{-1}\left[\dfrac{e^{-s}}{s^2+s}\right]=\Laplace[^{-1}\left[\dfrac{e^{-s}}{s(s+1)}\right]$$
+Vale no la sé resolver...\\
+\item $\Laplace[^{-1}\left[\dfrac{1-e^{-\pi s}}{s(s^2+2s+5)}\right]$
+Que tampoco sé como resolverla...
+\clearpage
+\end{enumerate}
+\textbf{5.5 Calcule las transformadas inversas de las siguientes funciones racionales de s, mediante descomposición en fracciones simples:}
+
+\begin{enumerate}[a)]
+\item $F(s)=\dfrac{s+5}{s^2-4}$
+\\ \\ Como se indica en el enunciado vamos a descomponer en fracciones simples nuestra función:
+$$F(s)=\dfrac{s+5}{s^2-4}=\dfrac{A}{s+2}+\dfrac{B}{s-2}$$
+\\ Ahora vamos a obtener los valores de $A$ y $B$:
+$$A(s-2)+B(s+2)=s+5$$
+\begin{center}
+$\begin{array}{lcl}
+	si \ s=-2 & -4A=3 & A= - \dfrac{3}{4} \\ \\
+	si \ s=2 & 4B=7 & B= \dfrac{7}{4} \\
+\end{array}$
+\end{center}
+Sustituyendo los valores obtenidos nos que lo siguiente:
+$$F(s)=\dfrac{s+5}{s^2-4}=\dfrac{-3}{4(s+2)}+\dfrac{7}{4(s-2)}= (-1)\dfrac{3}{4}\Laplace[^{-1}\left[\dfrac{1}{s+2}\right]+ \dfrac{7}{4}\cdot\Laplace[^{-1}\left[\dfrac{1}{s-2}\right]$$
+\\ Estas ya son inmediatas asi que queda como resultado:
+$$F(s)=\dfrac{s+5}{s^2-4}=-\dfrac{3}{4}\cdot e^{-2t}+\dfrac{7}{4}\cdot e^{2t}$$
+\item $F(s)= \dfrac{1}{(s+1)^4}$ \\ \\
+Vamos a hacer lo mismo que con la anterior
+$$F(s)= \dfrac{1}{(s+1)^4}= \dfrac{A}{s+1}+\dfrac{B}{(s+1)^2}+\dfrac{C}{(s+1)^3}+\dfrac{D}{(s+1)^4}$$
+\\ Ahora vamos a obtener los valores de $A,B,C \ y \ D$:
+$$A(s+1)+B(s+1)^2+C(+1)^3+(s+1)^4=1$$ \\
+Esto es un sistema que ya sabemos resolver la única diferencia es que esta vez tiene la misma raíz, diferenciándose unas de otras por la multiplicidad de la misma, lo que habría que hacer es ir dando valores a s, como  $s=1,2,3,4.$
+
+Por lo demás no presenta ninguna dificultad más, porque una vez obtengamos los valores de las constantes
+
+\end{enumerate}
 
 
 
